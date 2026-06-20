@@ -1,0 +1,25 @@
+openssl req -x509 -newkey rsa:2048 \
+-keyout key.pem \
+-out cert.pem \
+-days 365 \
+-nodes
+
+terminal 1:
+
+sudo python3 sniffer.py
+
+
+Terminal 2:
+
+python servidor.py
+
+Terminal 3:
+
+python cliente.py
+
+Saída esperada:
+
+[Servidor] Escutando em 127.0.0.1:8443
+[Servidor] Cliente conectado: ('127.0.0.1', 52344)
+[Servidor] Comando Seguro Recebido:
+AUTH_TOKEN:XYZ123:CMD:REBOOT_SERVER
