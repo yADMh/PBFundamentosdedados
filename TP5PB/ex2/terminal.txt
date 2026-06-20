@@ -1,0 +1,17 @@
+user@laboratorio:~/Desktop$ python3 bin_packing.py
+=== RESULTADO DA ALOCAÇÃO (HEURÍSTICAS) ===
+
+[Heurística Next-Fit]
+- Servidores utilizados: 24
+- Exemplo Servidor 1: [48, 12, 35] (Total: 95/100 GB)
+- Exemplo Servidor 2: [22, 17] (Total: 39/100 GB)
+- Exemplo Servidor 3: [65, 8] (Total: 73/100 GB)
+
+[Heurística First-Fit Decreasing]
+- Servidores utilizados: 20
+- Exemplo Servidor 1: [65, 35] (Total: 100/100 GB)
+- Exemplo Servidor 2: [62, 38] (Total: 100/100 GB)
+- Exemplo Servidor 3: [61, 39] (Total: 100/100 GB)
+
+Conclusão:
+First-Fit Decreasing economizou 4 servidores em relação ao Next-Fit.

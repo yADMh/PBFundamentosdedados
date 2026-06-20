@@ -1,0 +1,73 @@
+openssl req -x509 -newkey rsa:2048 \
+-keyout key.pem \
+-out cert.pem \
+-days 365 \
+-nodes
+
+(venv) user@laboratorio:~/Desktop$ source venv/bin/activate
+python servidor.py
+[Servidor] Escutando em 127.0.0.1:8443
+[Servidor] Conexão TLS recebida de ('127.0.0.1', 59738)
+[Servidor] Comando Seguro Recebido: AUTH_TOKEN:XYZ123:CMD:REBOOT_SERVER
+
+
+(venv) user@laboratorio:~/Desktop$ source venv/bin/activate
+python cliente.py
+[Cliente] Mensagem enviada: AUTH_TOKEN:XYZ123:CMD:REBOOT_SERVER
+
+
+(venv) user@laboratorio:~/Desktop$ source venv/bin/activate
+sudo ./venv/bin/python sniffer.py
+Interfaces disponíveis:
+ - enp0s3
+ - any
+ - lo
+ - docker0
+ - bluetooth-monitor
+ - nflog
+ - nfqueue
+ - dbus-system
+ - dbus-session
+[*] Iniciando captura na interface lo (Porta 8443)...
+
+[+] Pacote TCP Capturado!
+Tamanho Payload: 517 bytes
+[Dados Brutos do Payload]: b'\x16\x03\x01\x02\x00\x01\x00\x01\xfc\x03\x03dqL\x89\x16\xf7\xf6\x14\x15\xbc\xde\xb3\xe3=:\r\x06I\x01<=\xb30\x90%\x0b=x\xa5\x81\x17\x9f \x90\x818\xb5\xd3\xa1\x9b\xf0\xf37\x02t,\x9b\x95\x94\xe4\xf17\xe2\tlS>I\xd7z\x87t7\xa5\\\x00>\x13\x02'
+.I.<=.0.%nvertido]: ...........dqL..........=:
+         =x.... ..8......7.t,.....7.	lS>I.z.t7.\.>.......,.0.........+./...$.(.k.#.'.g.
+...9
+[-] Alerta: Padrão 'AUTH_TOKEN' NÃO encontrado. Os dados estão devidamente cifrados via TLS.
+
+[+] Pacote TCP Capturado!
+Tamanho Payload: 1537 bytes
+[Dados Brutos do Payload]: b'\x16\x03\x03\x00z\x02\x00\x00v\x03\x03xb#\x9caJ\xdd\xda\x84I\xcbc.\xef\tH\x8e\x1b\x89J]{%\x9f\x9e\xf0\x80\xf6\x82\xd3\xf9\x7f \x90\x818\xb5\xd3\xa1\x9b\xf0\xf37\x02t,\x9b\x95\x94\xe4\xf17\xe2\tlS>I\xd7z\x87t7\xa5\\\x13\x02\x00\x00'
+[Texto Convertido]: ....z...v..xb#.aJ...I.c..	H...J]{%......... ..8......7.t,.....7.	lS>I.z.t7.\......+.....3.$... ....ua.......Bsmk8..n.4..
+[-] Alerta: Padrão 'AUTH_TOKEN' NÃO encontrado. Os dados estão devidamente cifrados via TLS.
+
+[+] Pacote TCP Capturado!
+Tamanho Payload: 80 bytes
+[Dados Brutos do Payload]: b'\x14\x03\x03\x00\x01\x01\x17\x03\x03\x00EI\x18\xe9\x93\xe0D(\x15\xa3\xdaoT\x1e\x02\xf9f\x9f\xf0\xa0\x94\x96\x81J\xaea]XH\xe9\x15\x9fB\xa3\x03\xda\xeb\x94\xe94\xdd\xa6I(\xcc\xd3\xc9C\xbf\xa8\xc4\xe6#\xe5\xd0\xe1%v\xaa\xe1\x8b\xa7G\xd7\xe7\x19\xa5\xe4\xcb\xc7'
+[Texto Convertido]: ..........EI....D(...oT...f......J.a]XH...B......4..I(...C....#...%v....G.......
+[-] Alerta: Padrão 'AUTH_TOKEN' NÃO encontrado. Os dados estão devidamente cifrados via TLS.
+
+[+] Pacote TCP Capturado!
+Tamanho Payload: 57 bytes
+[Dados Brutos do Payload]: b'\x17\x03\x03\x004\xfb\xbcK\x12\x15\xaeLM\x88B\x98\xf3\xeae\x10QM\x01\xf9\xda\xc4$A\xf3\xcf[\x10\xc5\xdd\xf9jw\xbf\x00\xba\x10\r\x91H\x98$\x18\xaaJ\x87\x14\xf9lF\xf8\x1c\xa8'
+.H.$..J...lF...do]: ....4..K...LM.B...e.QM....$A..[....jw....
+[-] Alerta: Padrão 'AUTH_TOKEN' NÃO encontrado. Os dados estão devidamente cifrados via TLS.
+
+[+] Pacote TCP Capturado!
+Tamanho Payload: 57 bytes
+[Dados Brutos do Payload]: b'\x17\x03\x03\x004\xfb\xbcK\x12\x15\xaeLM\x88B\x98\xf3\xeae\x10QM\x01\xf9\xda\xc4$A\xf3\xcf[\x10\xc5\xdd\xf9jw\xbf\x00\xba\x10\r\x91H\x98$\x18\xaaJ\x87\x14\xf9lF\xf8\x1c\xa8'
+.H.$..J...lF...do]: ....4..K...LM.B...e.QM....$A..[....jw....
+[-] Alerta: Padrão 'AUTH_TOKEN' NÃO encontrado. Os dados estão devidamente cifrados via TLS.
+
+[+] Pacote TCP Capturado!
+Tamanho Payload: 255 bytes
+[Dados Brutos do Payload]: b'\x17\x03\x03\x00\xfa\x99\xed\x81\xef0\xf9\x9f\xe3Nh\xfb\xaa&\xd6\xcc\xbf\xf3\x0c\x9fX\xae,\xc1\xb0\x92\n\x92\xcf\x94\xfbW\x93\x14g=[\xa4\xe7%\x14z\x8d\xe7\xb5t\x1f6\ny\xc3S\xb6\xa8\x0b>\x803\xe4\xc5\xe0\xc6\x03Rb5e\xa1.\xfb\xfb\x01\xd2\x07\x89\x1e'
+[Texto Convertido]: .........0...Nh..&....
+                                          .X.,...
+....W..g=[..%.z...t.6
+y.S..
+     >.3.....Rb5e.............Z?-~.....9P.....C..s... ...C.....A..
+[-] Alerta: Padrão 'AUTH_TOKEN' NÃO encontrado. Os dados estão devidamente cifrados via TLS.

@@ -5,8 +5,8 @@ from collections import defaultdict
 # CONFIGURAÇÕES
 
 
-REDE = "192.168.1.0/24"
-IP_GATEWAY = "192.168.1.1"
+REDE = "10.0.2.0/24"
+IP_GATEWAY = "10.0.2.2"
 
 
 # NETWORK SCANNER
@@ -146,4 +146,3 @@ if __name__ == "__main__":
         tabela,
         IP_GATEWAY
     )
-

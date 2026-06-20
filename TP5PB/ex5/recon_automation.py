@@ -106,8 +106,8 @@ def executar_nmap(alvos):
 
             scanner.scan(
                 hosts=host,
-                arguments="-Pn -F -sV --script=discovery"
-            )
+                arguments="-Pn -F -sV --script=discovery --host-timeout 30s"
+                )
 
             host_info = {}
 
@@ -161,9 +161,9 @@ def salvar_relatorio(relatorio):
 
 def imprimir_resumo(relatorio):
 
-    print("\n" + "=" * 50)
+    
     print("RELATÓRIO AUTOMATIZADO DE SUPERFÍCIE DE ATAQUE")
-    print("=" * 50)
+   
 
     print(f"\n[+] Alvo analisado: {ALVO}")
 
@@ -215,8 +215,8 @@ if __name__ == "__main__":
     brute = brute_force_subdominios(ALVO)
 
     hosts = extrair_hosts(
-        dns.get("registros", [])
-    )
+    dns.get("registros", [])
+    )[:3]
 
     nmap_resultado = executar_nmap(hosts)
 
@@ -227,4 +227,3 @@ if __name__ == "__main__":
     salvar_relatorio(relatorio)
 
     imprimir_resumo(relatorio)
-

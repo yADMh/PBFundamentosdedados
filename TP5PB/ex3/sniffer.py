@@ -93,7 +93,20 @@ print("Interfaces disponíveis:")
 for d in dispositivos:
     print(" -", d)
 
-interface = dispositivos[0]
+# Procurar automaticamente a interface loopback
+
+interface = None
+
+for d in dispositivos:
+    if d == "lo":
+        interface = d
+        break
+
+if interface is None:
+    print(
+        "[ERRO] Interface loopback 'lo' não encontrada."
+    )
+    exit(1)
 
 cap = pcapy.open_live(
     interface,
